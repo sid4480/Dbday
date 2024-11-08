@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <style>
+        body {
+            background-image: url(media/images/HLscrnsht2.jpg.png);
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+        #bday-msg {
+            color: white;
+            font-size: 20px;
+            margin: 20px 0;
+            width: 90%;
+            max-width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+            justify-self: left;
+            position: absolute;
+            left: 20px;
+            margin-bottom: 360px;
+        }
+        .getinform {
+            background-color: rgba(255, 248, 220, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-left: 10px;
+            gap: 15px;
+            text-align: left;
+            position: absolute;
+            left: 20px; 
+        }
+        .getinform h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: center;
+            
+        }
+        .getinform input[type="text"],
+        .getinform textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .getinform button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .getinform button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        /* Responsive adjustments for mobile screens */
+        @media (max-width: 768px) {
+            body {
+                background-size: contain;
+                padding: 10px;
+            }
+            #bday-msg {
+                font-size: 18px;
+                margin-top: 10px;
+            }
+            .getinform h2 {
+                font-size: 16px;
+            }
+            .getinform {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 375px) {
+            #bday-msg {
+                font-size: 16px;
+                padding: 10px;
+            }
+            .getinform h2 {
+                font-size: 14px;
+            }
+            .getinform button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="bday-msg">
+        Before seeing the gift, answer the question...
+    </h1>
+
+    <div class="getinform">
+        <form id="wishForm" action="https://api.web3forms.com/submit" method="POST">
+            <h2>What do you wish to do or get this year, other than Academics?</h2>
+            <input type="hidden" name="access_key" value="57205d11-e622-444d-a526-128796995bba">
+            <textarea name="message" id="wishbox" placeholder="Write honestly" rows="5" required></textarea>
+            <button type="submit"><strong>Show Gift</strong></button>
+        </form>
+    </div>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+    <script>
+        document.getElementById("wishForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            
+            const formData = {
+                access_key: "57205d11-e622-444d-a526-128796995bba", 
+                message: document.getElementById("wishbox").value 
+            };
+
+            fetch(this.action, { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json(); // Parse the response as JSON
+            })
+            .then(data => {
+                console.log("Web3Forms response:", data); 
+                
+                if (data.success) {
+                    window.location.href = "gift.html"; // Redirect if submission was successful
+                } else {
+                    alert("Submission error: " + (data.message || "Unknown error")); 
+                }
+            })
+            .catch(error => {
+                console.error("Fetch error:", error); // Log the error
+                alert("There was an error submitting your form. Please try again.");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Birthday Message Board</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #FFC1E3, #FF8A80, #FFB74D);
+            background-size: 600% 600%;
+            animation: gradientShift 6s ease infinite;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #333;
+            font-family: cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Message board container */
+        #message-board {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        /* Note styling */
+        .note, .note1, .note2, .note3, .note4, .note5, .note6, .note7 {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            padding: 20px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-size: 16px;
+        }
+
+        .note { background-color: rgb(3, 34, 110); }
+        .note1 { background-color: rgb(3, 129, 193); }
+        .note2 { background-color: rgb(78, 1, 75); }
+        .note3 { background-color: rgb(2, 112, 85); }
+        .note4 { background-color: rgb(12, 223, 226); }
+        .note5 { background-color: rgb(255, 200, 0); } 
+        .note6 { background-color: #c50bce; }
+        .note7 { background-color: rgb(215, 15, 38); }
+
+        .note:hover, .note1:hover, .note2:hover, .note3:hover, .note4:hover, .note5:hover, .note6:hover, .note7:hover {
+            transform: scale(1.1);
+        }
+
+        /* Gradient background animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Balloon styles */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            animation: float 10s linear infinite;
+        }
+        .balloon::before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 22px;
+            width: 6px;
+            height: 40px;
+            background: currentColor;
+        }
+
+        .balloon1 { background: radial-gradient(circle at 10px 10px, #FFC1E3, #FF69B4); }
+        .balloon2 { background: radial-gradient(circle at 10px 10px, #B2FF59, #76FF03); }
+        .balloon3 { background: radial-gradient(circle at 10px 10px, #82B1FF, #2979FF); }
+        .balloon4 { background: radial-gradient(circle at 10px 10px, #FFAB91, #FF5722); }
+        .balloon5 { background: radial-gradient(circle at 10px 10px, #FFD740, #FFC400); }
+
+        /* Balloon floating animation */
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-150vh); opacity: 0; }
+        }
+
+        /* Popup modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Footer styling */
+        #bottom {
+            color: white;
+            padding: 10px;
+            font-size: medium;
+            font-family: cursive;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Media Query for screens smaller than 768px */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .note, .note1, .note2, .note3, .note4, .note5, .note6, .note7 {
+                width: 90px;
+                height: 90px;
+                font-size: 14px;
+            }
+
+            #bottom {
+                font-size: small;
+            }
+        }
+
+        /* Media Query for screens smaller than 375px */
+        @media (max-width: 375px) {
+            h1 {
+                font-size: 22px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                top: 10px;
+            }
+
+            .note, .note1, .note2, .note3, .note4, .note5, .note6, .note7 {
+                width: 90px;
+                height: 90px;
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            #bottom {
+                font-size: x-small;
+                padding: 5px;
+                bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Just Click one by one!</h1>
+    <div id="message-board">
+        <div class="note" onclick="showPopup(0)"><strong>Open up</strong></div>
+        <div class="note1" onclick="showPopup(1)"><strong>Open up</strong></div>
+        <div class="note2" onclick="showPopup(2)"><strong>Open up</strong> </div>
+        <div class="note3" onclick="showPopup(3)"><strong>Open up</strong> </div>
+        <div class="note4" onclick="showPopup(4)"><strong>Open up</strong> </div>
+        <div class="note5" onclick="showPopup(5)"><strong>Open up</strong> </div>
+        <div class="note6" onclick="showPopup(6)"><strong>Open up</strong></div>
+        <div class="note7" onclick="showPopup(7)"><strong>Open up</strong></div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <img id="popup-image" src="" alt="Popup Image">
+            <p id="popup-message"></p>
+        </div>
+    </div>
+    <div id="bottom">Made with ❤️ by Sidharth</div>
+
+    <!-- Background Balloons -->
+    <div class="balloon balloon1" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="balloon balloon2" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="balloon balloon3" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="balloon balloon4" style="left: 70%; animation-delay: 1s;"></div>
+    <div class="balloon balloon5" style="left: 90%; animation-delay: 3s;"></div>
+
+    <script>
+        // Messages and images array
+        const messagesData = [
+            { message: "Always be passionate for sweet!💕", img: "media/images/FB_IMG_1730044269512.jpg" },
+            { message: "You're Going to miss this perfect uniform on your next Bday!Enjoy untill it ends🥹", img: "media/images/Her.jpg.jpg" },
+            { message: "Never miss a chance to be on a dancing floor💃.", img: "media/images/Screenshot_2024-07-03-10-57-49-61_a63b0f8076346d26cbdc1b971a1da2a7.jpg" },
+            { message: "If it's black just wear it no matter how frequent it is!✨", img: "media/images/00c10150418d4e0abfe71f9ba4b0b368.jpg" },
+            { message: "Don't miss a chance to be in saree again👀", img: "media/images/Str.jpg.jpg" },
+            { message: "Taking a picture with your mom whenever going out surely can help you improve looks!🌸", img: "media/images/Screenshot 2024-11-07 034258.png" },
+            { message: "Always enjoy like this with them❣",img: "media/images/FB_IMG_1730988489137.jpg" },
+            { message: "Eat or what please be chubby always🫣",img: "media/images/Screenshot 2024-11-07 204337.png" }
+        ];
+
+        function showPopup(index) {
+            const modal = document.getElementById("popup-modal");
+            const image = document.getElementById("popup-image");
+            const message = document.getElementById("popup-message");
+            image.src = messagesData[index].img;
+            message.innerText = messagesData[index].message;
+            modal.style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-modal").style.display = "none";
+        }
+        document.getElementById("popup-modal").addEventListener("click", function(event) {
+            if (event.target === this) {  
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

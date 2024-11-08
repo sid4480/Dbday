@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: large;
+            font-style: italic;
+            color: crimson;
+            background: rgb(36,48,36);
+            background: linear-gradient(119deg, rgba(36,48,36,1) 0%, rgba(58,8,20,1) 78%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .meblr, .video {
+            width: 70%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px auto;
+        }
+        .video{
+            width: 600px;
+        }
+        .cake {
+            width: 80%; 
+            height: auto; 
+            max-width: 600px; 
+        }
+        .wish {
+            font-size: larger;
+            text-align: center;
+        }
+        #mysong {
+            width: 50%;
+            max-width: 300px;
+            margin: 20px auto;
+            height: 45px;
+        }
+        #bottom {
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: medium;
+            font-family: cursive;
+        }
+        @media (max-width: 768px) {
+            .meblr {
+                width: 90%; 
+            }
+            .wish {
+                font-size: larger; 
+            }
+            .meblr, .video {
+                width: 80%;
+                margin: 10px auto;
+            }
+            #mysong {
+                width: 250px;
+                height: 30px;
+            }
+        }
+        @media (max-width: 375px) {
+            body {
+                font-size: small;
+            }
+            .wish, #bottom {
+                font-size: medium;
+            }
+            .meblr, .video {
+                width: 250px;
+                margin: 5px auto;
+            }
+            
+            .cake {
+                width: 250px; 
+                height: auto; 
+            }
+            #mysong {
+                width: 250px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>I don’t have any Ferrero Rocher like this to gift you now</h2>
+    <img src="media/images/7c04e32fa7dc452481ed92f6b4290817.jpg" class="cake">
+    <h2>But You Know what, me >> Gift &#128526;</h2>
+    <img src="media/images/meblr.jpg" alt="myimage" class="meblr">
+    <audio id="mysong" controls autoplay>
+        <source src="media/audio/babypagalnewcomse_6YvA1APX.mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <br><br>
+    <p class="wish">The scene below is what I wish for you and my trail gift,pause the song before playing the video!</p>
+    <p>
+        <video class="video" controls autoplay loop muted>
+            <source src="media/images/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </p>
+    <div id="bottom">Made with ❤️ by Sidharth</div>
+</body>
+</html>
+
+

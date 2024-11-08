@@ -1,0 +1,312 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #f8dede;
+    color: black;
+    text-align: center;
+    font-style: italic;
+}
+#greeting{
+    color: #f3f3f3;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 2.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    width: 0;
+    animation: typing 3.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+}
+#greeting {
+    font-size: 2em;
+    text-align: center;
+    margin: 10px auto;
+    max-width: 90%; 
+    white-space: normal;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+body {
+    font-family: cursive;
+}
+.gbox{
+    width: 200px;
+}
+.gbox:hover{
+    transform: scale(1.1) ;
+}
+.hidden {
+    display: none;
+}
+
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container, .container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#foryou{
+    color: #f3f3f3;
+    font-family: cursive;
+
+}
+.mymsg{
+    color: #333;
+    font-family: cursive;
+}
+.bsong{
+    font-family: cursive;
+}
+#bottom{
+    justify-content: last baseline;
+    color:white;
+    padding: 10px;
+    background-color:  #ff869e;
+    background-size: 100px;
+    font-style: italic;
+    font-family: cursive;
+}
+.hidden {
+    display: none;
+}
+header {
+    background-color:#4B0082 ;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 1.2em;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+#loginForm {
+    padding: 10px;
+    width: 350px;
+    font-size: 1.2em;
+    border: 2px solid #4B0082;
+    border-radius: 5px;
+    justify-self: center;
+    margin-top: 220px;
+}
+#lbutton{
+    padding: 10px 10px;
+    font-size: 1.2em;
+    background-color: #4B0082;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#lbutton:hover{
+    transform: scale(1.1);
+    background-color: green;
+}
+#notes-button{
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: red;
+    background-size: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#notes-button:hover {
+    transform: scale(1.1);
+    background-color: green;
+}
+.gallery img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+}
+.messages {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: rgb(4, 30, 124);
+    border-radius: 10px;
+}
+.message-box {
+    border: 2px solid #ff869e;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+.Mimp{
+    font-size: large;
+    color: #3498db;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+}
+.Mimp:hover{
+    transform: scale(1.1);
+}
+.Ypre{
+    font-size: large;
+    color: #3498db;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+}
+.Ypre:hover{
+    transform: scale(1.1);
+}
+.music-control {
+    margin: 20px 0;
+}
+.countdown {
+    font-size: 2em;
+    margin-top: 30px;
+}
+    #loading {
+      background-image: url('media/images/Hiddenlove3.jpg');
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; 
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+    }
+    @media (max-width: 768px) {
+        #loginForm, .container {
+            width: 80%;
+            padding: 10px;
+        }
+        #loading {
+            flex-direction: column; 
+            padding: 10px; 
+            background-size: contain; 
+        }
+        #greeting {
+            font-size: 2em;
+        }
+    
+        h1 {
+            font-size: 2em;
+        }
+    
+        p, button {
+            font-size: 1em;
+        }
+        #lbutton,
+        #notes-button,
+        .Mimp,
+        .Ypre {
+            font-size: 0.9em;
+            padding: 8px;
+            width: 50%;
+        }
+        .gallery img {
+            width: 70%;
+            height: auto;
+        }
+        .gbox{
+            width: 150px;
+        }
+    }
+    
+    @media (max-width: 375px) {
+        #loginForm, .container {
+            width: 70%;
+            padding: 5px;
+        }
+        #loading {
+            padding: 5px; 
+            background-size:contain; 
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+    
+        
+            #greeting {
+                max-width: 375px; 
+                white-space: normal; 
+                overflow: hidden;
+                display: block; 
+                font-size: 24px; 
+                line-height: 1.2; 
+                margin: 0 auto; 
+                text-align: center; 
+            }
+        
+    
+        p, button {
+            font-size: 0.9em;
+        }
+    
+        #lbutton,
+        #notes-button,
+        .Mimp,
+        .Ypre {
+            font-size: 0.9em;
+            padding: 8px;
+            width: 50%;
+        }
+        .gbox{
+            width: 100px;
+        }
+        .gallery img {
+            width: 70%;
+            height:auto;
+            margin: 5px 0;
+        }
+    
+        .countdown {
+            font-size: 1.5em;
+        }
+    }
+    

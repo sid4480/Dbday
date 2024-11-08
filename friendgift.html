@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Appreciation</title>
+    <style>
+        body {
+            background-color: yellowgreen;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #loading {
+            background-image: url('media/images/Cover.jpg.png');
+            background-size: contain;
+            background-position: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            font-size: 50px;
+            color:cadetblue;
+            text-align: center;
+            font-style: italic;
+            font-family: cursive;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 300px;
+        }
+        
+        p {
+            font-size: 30px;
+            background: linear-gradient(45deg, gray, darkgray);
+            color: white;
+            text-shadow: 2px 2px 4px purple;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%; 
+            margin: 0 auto;
+            word-wrap: break-word;
+        }
+
+        .typing-text {
+            display: inline-block;
+            animation: typing 4s steps(30, end) forwards, blink 0.75s step-end infinite; 
+            overflow: hidden;
+            border-right: 3px solid white; 
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        img {
+            width: 500px;
+            height: 500px;
+            display: block;
+            margin: 20px auto;
+            opacity: 0; 
+            animation: fadeIn 2s forwards ease; 
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .audio-container {
+            width: 50%;
+            max-width: 450px;
+            
+        }
+
+        .frnd1, .frnd2, .frnd3, .old1, .old2 {
+            animation-delay: 0.5s, 1s, 1.5s, 2s, 2.5s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* For smaller screens */
+        @media (max-width: 768px) {
+            .loader {
+                font-size: 36px;
+            }
+            #loading {
+                background-size: 600px;
+            }
+            img, .fstar {
+                width: 70%;
+                height: auto;
+            }
+            p {
+                font-size: 24px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .loader {
+                font-size: 24px;
+                padding: 15px;
+            }
+            #loading {
+                background-size: cover;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+            img, .fstar {
+                width: 50%;
+                height: auto;
+            }
+            p {
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+
+        /* Audio container styling */
+        .audio-container {
+            width: 80%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px; /* Add some space above */
+        }
+
+        audio {
+            width: 80%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div class="loader"><strong>Pls Wait Devu...</strong></div>
+    </div>
+    <div id="friendgift-page" style="display: none;">
+        <p>
+            <span class="typing-text">Never Miss them from your life &#10084;</span>
+        </p>
+    </div>
+    <img src="media/images/friends1.jpg.jpg" alt="Friend 1" class="frnd1">
+    <img src="media/images/friends2.jpg.jpg" alt="Friend 2" class="frnd2">
+    <img src="media/images/6dbf1c5786e040f98199c3a124a55fc1.jpg" class="frnd3">
+    <p class="cap1">They saw all your extremes and still stayed by your side</p>
+    <img src="media/images/FB_IMG_1730042648197.jpg" class="old1">
+    <img src="media/images/FB_IMG_1730382669205.jpg" class="old2">
+    <p class="cap2">They made you dance and always stood for you</p>
+    <img src="media/images/Screenshot_2024-11-04-00-12-17-56_99c04817c0de5652397fc8b56c3b3817.jpg" class="cousns">
+    <img src="media/images/Screenshot 2024-11-03 155502.png" class="cousns1">
+    <p class="cap3">You have grown along with them, they will always care no matter what</p>
+    
+    <!-- Audio container positioned naturally after the content -->
+    <div class="audio-container">
+        <audio id="audio" controls>
+            <source src="media/audio/haan-ke-haan-maharaj-320-kbps_2dIUxsMM.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('friendgift-page').style.display = 'block';
+                document.getElementById('audio').play();
+            }, 1500); 
+        });
+    </script>
+</body>
+</html>
+
+

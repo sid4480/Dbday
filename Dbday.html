@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="bdaystyles.css">
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+          <h2>Fill the password</h2>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+         <p> <button type="submit" id="lbutton">Login</button></p>
+          <p id="error-message" style="color: red;"></p>
+        </form>
+    </div>
+
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container hidden" id="birthday-page">
+        <header>
+            <h1 id="greeting"></h1>  
+            <p id="foryou"></p>
+        </header>
+
+        <section>
+            <h2>Happiee 17...&#10084;</h2>
+            <p class="mymsg" id="mymsg-text"></p>
+        </section>
+        <div>
+            <p><a href="mynotes.html"><button id="notes-button"><strong>Bday Notes</strong></button></a></p>
+        </div>
+        <section class="gallery">
+            <h2>Pretty Pretty Devu</h2>
+            <img src="media/images/FB_IMG_1730044989960.jpg" alt="Special moment 1">
+            <img src="media/images/FB_IMG_1730042745221.jpg" alt="Special moment 2">
+            <img src="media/images/FB_IMG_1730044656008.jpg" alt="Special moment 3">
+            <img src="media/images/FB_IMG_1730042680313.jpg" alt="Special moment 4">
+            <img src="media/images/FB_IMG_1730042581453.jpg">
+            <img src="media/images/FB_IMG_1730387821436.jpg">
+            <img src="media/images/IMG_20240727_000313.jpg">
+            <img src="media/images/dance.jpg.jpg">
+            <img src="media/images/Str.jpg.jpg" alt="Special moment 4">
+        </section>
+
+        <section class="messages">
+            <h2>Your loved people</h2>
+            <div class="message-box">
+                <p><a href="famgift.html"><button class="Mimp">Most Important</button></a></p>
+            </div>
+            <div class="message-box">
+                <p><a href="friendgift.html"><button class="Ypre">Your Preference</button></a></p>
+            </div>
+        </section>
+        <h2 class="gtitle"><strong>Gift</strong></h2>
+        <section><a href="giftform.html"><img src="media/images/gift-box.png" class="gbox"></a></section>
+        <section class="music-control">
+            <h2>Birthday Song</h2>
+            <audio id="birthday-song" controls>
+                <source src="media/audio/sirivennelaedit.mp3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+    </div>
+    <div>
+        <p id="bottom" style="display: none;"> Made with ❤️ by Sidharth</p>
+    </div>
+
+    <script>
+        function resetPageState() {
+            document.querySelector('.login-container').style.display = 'block'; 
+            document.getElementById('birthday-page').style.display = 'none';   
+            document.getElementById('loading').style.display = 'none';        
+            document.getElementById('bottom').style.display = 'none';
+        }
+    
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const password = document.getElementById('password').value;
+            const defaultPassword = 'Devu@17';
+            const loadingElement = document.getElementById('loading');
+            const birthdayPage = document.getElementById('birthday-page');
+            const errorMessage = document.getElementById('error-message');
+    
+            loadingElement.style.display = 'block';  
+            document.querySelector('.login-container').style.display = 'none'; 
+            setTimeout(() => {
+                loadingElement.style.display = 'none'; 
+                if (password === defaultPassword) {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    birthdayPage.style.display = 'block';  
+                    document.getElementById('bottom').style.display = 'block';
+    
+                    // Type the text
+                    typeText("Happy Birthday! Devuu 🎉", document.getElementById('greeting'));
+                    typeText("This is probably the first time I'm wishing you on your exact Birthday. I don't want to write any heartfelt message or wish here. I'm wishing you all the best for the future, as always. Be happy and healthy. This is a personalized website; you can visit  different pages here to refresh  through a small portion of the Vast number of special moments and memories you've come across, along with some silly advices in the notes below... Just for My Devuuu...❤️", document.getElementById('mymsg-text'));
+    
+                    const audioElement = document.getElementById('birthday-song');
+                    audioElement.play().catch(error => {
+                        console.log('Autoplay was prevented. User interaction may be required:', error);
+                    });
+                } else {
+                    resetPageState(); 
+                    errorMessage.textContent = 'Incorrect password, please try again.';
+                }
+            }, 1750);  
+        });
+    
+        window.onload = function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            const loadingElement = document.getElementById('loading');
+            const birthdayPage = document.getElementById('birthday-page');
+            loadingElement.style.display = 'block';
+            document.querySelector('.login-container').style.display = 'none'; 
+    
+            setTimeout(() => {
+                loadingElement.style.display = 'none'; 
+    
+                if (isLoggedIn === 'true') {
+                    birthdayPage.style.display = 'block';
+                    document.getElementById('bottom').style.display = 'block';
+    
+                    // Type the text
+                    typeText("Happy Birthday! Devuu 🎉", document.getElementById('greeting'));
+                    typeText("This is probably the first time I'm wishing you on your exact Birthday. I don't want to write any heartfelt message or wish here. I'm wishing you all the best for the future, as always. Be happy and healthy. This is a personalized website; you can visit  different pages here to refresh  through a small portion of the Vast number of special moments and memories you've come across, along with some fun advice in the notes below... Just for My Devuuu...❤️", document.getElementById('mymsg-text'));
+    
+                    const audioElement = document.getElementById('birthday-song');
+                    audioElement.play().catch(error => {
+                        console.log('Autoplay was prevented. User interaction may be required:', error);
+                    });
+                } else {
+                    resetPageState();
+                }
+            }, 1000);  
+        };
+    
+        function typeText(text, element) {
+            element.textContent = '';  
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i); 
+                    i++;
+                    setTimeout(type, 80);
+                }
+            }
+            type();
+        }
+    </script>
+    
+</body>
+</html>
+
+
+
+
